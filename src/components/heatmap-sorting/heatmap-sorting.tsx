@@ -57,7 +57,7 @@ const HeatmapSorting: React.FC<HeatmapSortingProps> = ({ items, width, height })
                 const aspectRatio = width > height ? Math.max(nodeArea / height, height / nodeArea) : Math.max(nodeArea / width, width / nodeArea);
                 maxAspectRatio = Math.max(maxAspectRatio, aspectRatio);
             }
-
+            console.log(maxAspectRatio)
             return maxAspectRatio;
         };
 
@@ -116,20 +116,21 @@ const HeatmapSorting: React.FC<HeatmapSortingProps> = ({ items, width, height })
     };
 
     return (
-        <div className="relative bg-gray-200 w-full h-full">
-            {rectangles.map((rectangle, index) => (
-                <div
-                    key={index}
-                    className="absolute border border-gray-400"
-                    style={{
-                        top: `${rectangle.y}px`,
-                        left: `${rectangle.x}px`,
-                        width: `${rectangle.width}px`,
-                        height: `${rectangle.height}px`,
-                        backgroundColor: getColor(rectangle.value),
-                        overflow: 'hidden',
-                    }}
-                >
+        <div className={`w-full h-[800px] my-20 mx-auto`}>
+            <div className="relative bg-gray-200">
+                {rectangles.map((rectangle, index) => (
+                    <div
+                        key={index}
+                        className="absolute border border-gray-400"
+                        style={{
+                            top: `${rectangle.y}px`,
+                            left: `${rectangle.x}px`,
+                            width: `${rectangle.width}px`,
+                            height: `${rectangle.height}px`,
+                            backgroundColor: getColor(rectangle.value),
+                            overflow: 'hidden',
+                        }}
+                    >
                     <span style={{
                         color: 'white',
                         fontSize: `${getFontSize(rectangle.width, rectangle.height)}px`,
@@ -139,17 +140,18 @@ const HeatmapSorting: React.FC<HeatmapSortingProps> = ({ items, width, height })
                     }}>
                         {rectangle.name}
                     </span>
-                    <span style={{
-                        color: 'white',
-                        fontSize: `${getFontSize(rectangle.width, rectangle.height)}px`,
-                        position: 'absolute',
-                        bottom: '5px',
-                        right: '5px'
-                    }}>
+                        <span style={{
+                            color: 'white',
+                            fontSize: `${getFontSize(rectangle.width, rectangle.height)}px`,
+                            position: 'absolute',
+                            bottom: '5px',
+                            right: '5px'
+                        }}>
                         {rectangle.value}
                     </span>
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

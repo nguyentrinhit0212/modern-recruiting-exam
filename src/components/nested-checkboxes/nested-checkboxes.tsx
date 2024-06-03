@@ -150,12 +150,14 @@ export default function NestedCheckboxes({data}: NestedCheckboxesProps) {
         </ul>
     }
     return (
-        <div className={"text-black flex"}>
-            {
-                renderNestedItem({
-                    data: dataCheckBoxes,
-                })
-            }
+        <div className={"w-full h-auto"}>
+            <div className={"text-black flex"}>
+                {
+                    renderNestedItem({
+                        data: dataCheckBoxes,
+                    })
+                }
+            </div>
         </div>
     );
 }

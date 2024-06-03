@@ -1,5 +1,6 @@
 import NestedCheckboxes, {CheckBoxes, CheckboxState} from "@/components/nested-checkboxes/nested-checkboxes";
 import HeatmapSorting, {Node} from "@/components/heatmap-sorting/heatmap-sorting";
+import WordCloud from "@/components/word-cloud/word-cloud";
 
 const checkBoxesModel: CheckBoxes[] = [
     {
@@ -75,8 +76,9 @@ export default function HomePage() {
     };
 
 
-    return <div className="min-h-screen bg-white">
+    return <div className="min-h-screen container bg-white flex flex-col">
         <NestedCheckboxes data={checkBoxesModel}/>
         <HeatmapSorting items={generateData(20)} height={800} width={1200}/>
+        <WordCloud />
     </div>
 }
